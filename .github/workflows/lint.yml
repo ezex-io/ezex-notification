@@ -26,6 +26,4 @@ jobs:
         run: go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
       - name: Formatting and linting the project
-        run: |
-          cd go
-          make check
+        run: make check
