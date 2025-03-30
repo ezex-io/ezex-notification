@@ -10,7 +10,8 @@ Currently, it supports email notifications only.
 Before you begin, ensure you have the following installed:
 
 - **[Go](https://go.dev/doc/install/)**: The Go programming language.
-- **Development Tools**: run `make devtools` to install necessary tools for development.
+- **[Protocol Buffer Compiler](https://protobuf.dev/installation/)**: Needed to generate code from `.proto` files.
+- **Development Tools**: Run `make devtools` to install necessary tools for development.
 
 ### Build
 
