@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	configPath := flag.String("c", "", "Path to configuration file")
+	configPath := flag.String("config", "./config.yml", "Path to configuration file")
 
 	flag.Parse()
 
