@@ -16,10 +16,6 @@ func main() {
 
 	flag.Parse()
 
-	if *configPath == "" {
-		log.Fatal("Please specify a config file using -c flag")
-	}
-
 	cfg, err := config.Load(*configPath)
 	if err != nil {
 		log.Fatalf("failed to load module's config: %v", err)
