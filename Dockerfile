@@ -13,6 +13,6 @@ FROM alpine:latest
 RUN mkdir /etc/notification
 COPY --from=builder /app/build/ezex-notification /usr/bin/ezex-notification
 
-EXPOSE 8080
+EXPOSE 50051
 
 ENTRYPOINT ["/usr/bin/ezex-notification", "-config", "/etc/notification/config.yml"]
