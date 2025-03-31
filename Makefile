@@ -1,3 +1,8 @@
+BINARY_NAME = ezex-notification
+BUILD_DIR = build
+CMD_DIR = internal/cmd/server/main.go
+
+
 all: build test
 
 ########################################
@@ -7,10 +12,27 @@ devtools:
 	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 	go install mvdan.cc/gofumpt@latest
 
+proto:
+	protoc --go_out ./api/grpc/proto --go_opt paths=source_relative \
+           --go-grpc_out ./api/grpc/proto --go-grpc_opt paths=source_relative \
+	       --proto_path=./api/grpc/proto api/grpc/proto/*.proto
+
+docker:
+	docker build --tag ezex-notification .
+
 ########################################
 ### Building
 build:
-	go build -o ./build/main ./cmd/main.go
+	@mkdir -p $(BUILD_DIR)
+	go build -o $(BUILD_DIR)/$(BINARY_NAME) $(CMD_DIR)
+
+release:
+	@mkdir -p $(BUILD_DIR)
+	go build -ldflags "-s -w" -trimpath -o $(BUILD_DIR)/$(BINARY_NAME) $(CMD_DIR)
+
+clean:
+	@echo "Cleaning up build artifacts..."
+	rm -rf $(BUILD_DIR)
 
 ########################################
 ### Testing
@@ -25,4 +47,8 @@ fmt:
 check:
 	golangci-lint run --timeout=20m0s
 
-.PHONY: build test
+
+.PHONY: devtools proto docker
+.PHONY: build release
+.PHONY: test
+.PHONY: fmt check

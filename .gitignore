@@ -14,6 +14,3 @@ todo
 # VIM artifacts
 .swp
 .*.sw*
-
-# env
-.env

@@ -72,7 +72,6 @@ linters:
     - usestdlibvars
     - wastedassign
     - whitespace
-    - wrapcheck
     - zerologlint
     - varnamelen
 
@@ -84,7 +83,7 @@ linters-settings:
     enable-all-rules: true
     rules:
       - name: "exported"
-        disabled: false
+        disabled: true
 
       - name: package-comments
         disabled: false
@@ -129,6 +128,9 @@ linters-settings:
         disabled: true
 
       - name: redefines-builtin-id
+        disabled: true
+
+      - name: "if-return"
         disabled: true
 
       - name: unhandled-error
@@ -222,7 +224,7 @@ issues:
         - forbidigo
 
   exclude:
-    - "shadow: declaration of \"err\" shadows"
+    - 'shadow: declaration of "err" shadows'
     - "builtinShadow: shadowing of predeclared identifier: min"
     - "builtinShadow: shadowing of predeclared identifier: max"
     - "builtinShadow: shadowing of predeclared identifier: len"

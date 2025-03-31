@@ -1,0 +1,11 @@
+# GRPC Configuration
+grpc:
+  port: 50051
+
+# SMTP Configuration
+smtp:
+  host: "smtp.example.com"
+  port: 587
+  user: "your-email@example.com"
+  pass: "your-password"
+  from_email: "noreply@example.com"
