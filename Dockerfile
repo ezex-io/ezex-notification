@@ -15,4 +15,4 @@ COPY --from=builder /app/build/ezex-notification /usr/bin/ezex-notification
 
 EXPOSE 50051
 
-ENTRYPOINT ["/usr/bin/ezex-notification", "-config", "/etc/notification/config.yml"]
+ENTRYPOINT ["/usr/bin/ezex-notification"]
